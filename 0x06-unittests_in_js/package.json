@@ -1,15 +1,15 @@
 {
-    "name": "package",
-    "version": "1.0.0",
-    "description": "A package for unit test in mocha and chai",
-    "main": "index.js",
-    "scripts": {
-        "test": "node ./node_modules/mocha/bin/mocha"
-    },
-    "dependencies": {
-        "chai": "^3.5.0",
-        "mocha": "^2.2.5"
-    },
-    "author": "",
-    "license": "ISC"
+  "name": "package",
+  "version": "1.0.0",
+  "description": "A package for unit test in mocha and chai",
+  "main": "index.js",
+  "scripts": {
+     "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.2.5"
+  },
+  "author": "",
+  "license": "ISC"
 }
