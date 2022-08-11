@@ -1,38 +1,50 @@
 const assert = require('assert');
 const calculateNumber = require("./1-calcul.js");
 
-describe('calculateNumber', () => {
-    it('floating point whole numbers', () => {
-        assert.strictEqual(calculateNumber('SUM', 1.0, 2.0), 3);
-    })
-    it('rounding down b\'s floating point fractional number', () => {
-        assert.strictEqual(calculateNumber('SUM', 1.0, 2.4), 3);
-    })
-    it('rounding down a and b\'s floating point fractional number', () => {
-        assert.strictEqual(calculateNumber('SUM', 1.4, 2.4), 3);
-    })
-    it('rounding down a\'s floating point fractional number', () => {
-        assert.strictEqual(calculateNumber('SUM', 1.4, 2.0), 3);
-    })
-    it('rounding up b\'s floating point fractional numbers', () => {
-        assert.strictEqual(calculateNumber('SUM', 1.0, 2.5), 4);
-    })
-    it('rounding up a and b\'s floating point fractional numbers', () => {
-        assert.strictEqual(calculateNumber('SUM', 2.6, 2.5), 6);
-    })
-    it('rounding up a\'s floating point fractional numbers', () => {
-        assert.strictEqual(calculateNumber('SUM', 2.6, 2.0), 5);
-    })
-    it('rounding down a and b floating point fractional numbers with trailing 9\'s', () => {
-        assert.strictEqual(calculateNumber('SUM', 2.499999, 3.499999), 5);
-    })
-    it('rounding down a and b floating point fractional numbers with trailing 9\'s', () => {
-        assert.strictEqual(calculateNumber('SUBTRACT', 2.499999, 3.499999), -1);
-    })
-    it('rounding down a and b floating point fractional numbers with trailing 9\'s', () => {
-        assert.strictEqual(calculateNumber('DIVIDE', 2.499999, 0), 'Error');
-    })
-    it('rounding down a and b floating point fractional numbers with trailing 9\'s', () => {
-        assert.strictEqual(calculateNumber('DIVIDE', 2.499999, 0), 'Error');
-    })
-});
+describe('calculateNumber() - SUM', () => {
+    it('should return 4 after adding 1 and 3', () => {
+      assert.equal(calculateNumber('SUM', 1, 3), 4);
+    });
+    it('should return 5 after adding 1 and 3.7', () => {
+      assert.equal(calculateNumber('SUM', 1, 3.7), 5);
+    });
+    it('should return 5 after adding 1.2 and 3.7', () => {
+      assert.equal(calculateNumber('SUM', 1.2, 3.7), 5);
+    });
+    it('should return 6 after adding 1.5 and 3.7', () => {
+      assert.equal(calculateNumber('SUM', 1.5, 3.7), 6);
+    });
+    it('should return -3 after adding -1.0 and -2', () => {
+      assert.equal(calculateNumber('SUM', -1.0, -2), -3);
+    });
+  });
+  
+  describe('calculateNumber() - SUBTRACT', () => {
+    it('should return -4 after subtracting 1.4 and 4.5', () => {
+      assert.equal(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
+    });
+    it('should return 5 after subtracting 10 and 5', () => {
+      assert.equal(calculateNumber('SUBTRACT', 10, 5), 5);
+    });
+    it('should return -3 after subtracting 1.2 and 3.7', () => {
+      assert.equal(calculateNumber('SUBTRACT', 1.2, 3.7), -3);
+    });
+    it('should return -1 after subtracting -1.0 and -2', () => {
+      assert.equal(calculateNumber('SUBTRACT', -1.0, -2), 1);
+    });
+  });
+  
+  describe('calculateNumber() - DIVIDE', () => {
+    it('should return 0.2 after dividing 1.4 and 4.5', () => {
+      assert.equal(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+    });
+    it('should return 2 after dividing 10 and 5', () => {
+      assert.equal(calculateNumber('DIVIDE', 10, 5), 2);
+    });
+    it("should return 'Error' after dividing 1.2 and 0", () => {
+      assert.equal(calculateNumber('DIVIDE', 1.2, 0), 'Error');
+    });
+    it('should return 0.5 after dividing -1.0 and -2', () => {
+      assert.equal(calculateNumber('DIVIDE', -1.0, -2), 0.5);
+    });
+  });
